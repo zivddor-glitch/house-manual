@@ -8,16 +8,21 @@
 
   <style>
     :root {
-      --background: #f5f5f3;
-      --card: #ffffff;
-      --text: #202020;
-      --muted: #6f6f6f;
-      --border: #deded9;
-      --accent: #2f5f50;
-      --accent-soft: #e9f0ed;
-      --shadow: 0 4px 18px rgba(0, 0, 0, 0.06);
-      --radius: 18px;
-      --content-width: 860px;
+      --bg: #f6f1e8;
+      --bg-soft: #eef4f0;
+      --card: rgba(255, 255, 255, 0.92);
+      --text: #24332d;
+      --muted: #66736d;
+      --accent: #356859;
+      --accent-dark: #244a40;
+      --accent-soft: #dfece6;
+      --warm: #d98b6c;
+      --warm-soft: #f7e5dc;
+      --gold: #c49a52;
+      --border: rgba(53, 104, 89, 0.16);
+      --shadow: 0 14px 38px rgba(44, 67, 58, 0.10);
+      --radius: 22px;
+      --content-width: 920px;
     }
 
     * {
@@ -30,10 +35,14 @@
 
     body {
       margin: 0;
-      background: var(--background);
       color: var(--text);
       font-family: Arial, Helvetica, sans-serif;
-      line-height: 1.65;
+      line-height: 1.72;
+      background:
+        radial-gradient(circle at top right, rgba(217, 139, 108, 0.20), transparent 34rem),
+        radial-gradient(circle at top left, rgba(53, 104, 89, 0.16), transparent 30rem),
+        linear-gradient(180deg, var(--bg) 0%, var(--bg-soft) 100%);
+      background-attachment: fixed;
     }
 
     a {
@@ -43,113 +52,193 @@
     .page {
       width: min(100% - 28px, var(--content-width));
       margin: 0 auto;
-      padding: 24px 0 64px;
+      padding: 26px 0 72px;
     }
 
     .menu {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(145px, 1fr));
-      gap: 12px;
-      margin-bottom: 28px;
+      gap: 11px;
+      margin-bottom: 30px;
+      padding: 15px;
+      border: 1px solid rgba(255, 255, 255, 0.75);
+      border-radius: 25px;
+      background: rgba(255, 255, 255, 0.54);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
     }
 
     .menu a {
       display: flex;
       align-items: center;
       justify-content: center;
-      min-height: 64px;
-      padding: 12px;
-      background: var(--card);
+      min-height: 58px;
+      padding: 11px 13px;
+      background: rgba(255, 255, 255, 0.88);
       border: 1px solid var(--border);
-      border-radius: 14px;
+      border-radius: 15px;
+      color: var(--accent-dark);
       text-decoration: none;
       font-weight: 700;
       text-align: center;
-      box-shadow: var(--shadow);
+      transition: transform 160ms ease, background 160ms ease, box-shadow 160ms ease;
+    }
+
+    .menu a:nth-child(3n + 2) {
+      background: var(--warm-soft);
+      color: #754632;
+      border-color: rgba(217, 139, 108, 0.24);
+    }
+
+    .menu a:nth-child(3n) {
+      background: var(--accent-soft);
     }
 
     .menu a:hover,
     .menu a:focus-visible {
-      background: var(--accent-soft);
-      border-color: var(--accent);
+      transform: translateY(-2px);
+      background: #ffffff;
+      box-shadow: 0 8px 20px rgba(44, 67, 58, 0.12);
       outline: none;
     }
 
     .device {
+      position: relative;
+      overflow: hidden;
       scroll-margin-top: 18px;
+      margin-bottom: 19px;
+      padding: 24px 25px 22px;
       background: var(--card);
-      border: 1px solid var(--border);
+      border: 1px solid rgba(255, 255, 255, 0.92);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
-      padding: 22px;
-      margin-bottom: 18px;
+    }
+
+    .device::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 7px;
+      height: 100%;
+      background: linear-gradient(180deg, var(--accent), #77a18f);
+    }
+
+    .device:nth-of-type(3n + 2)::before {
+      background: linear-gradient(180deg, var(--warm), #e8b49d);
+    }
+
+    .device:nth-of-type(3n)::before {
+      background: linear-gradient(180deg, var(--gold), #e0c68f);
     }
 
     .device h2 {
-      margin: 0 0 14px;
-      font-size: 1.45rem;
+      margin: 0 0 15px;
+      color: var(--accent-dark);
+      font-size: clamp(1.38rem, 2vw, 1.62rem);
+      line-height: 1.25;
+    }
+
+    .device h3 {
+      display: inline-block;
+      margin: 18px 0 8px;
+      padding: 6px 11px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent-dark);
+      font-size: 1.02rem;
+    }
+
+    .device p {
+      margin: 0 0 10px;
     }
 
     .instructions {
       margin: 0;
-      padding-right: 22px;
+      padding-right: 23px;
+    }
+
+    .instructions li {
+      padding-right: 4px;
     }
 
     .instructions li + li {
-      margin-top: 8px;
+      margin-top: 9px;
     }
 
-    .device-image {
-      display: block;
-      width: 100%;
-      max-height: 620px;
-      object-fit: contain;
-      margin: 18px auto 0;
-      border-radius: 14px;
-      border: 1px solid var(--border);
-      background: #fafaf8;
+    .instructions li::marker {
+      color: var(--warm);
+      font-weight: 700;
     }
 
     .note {
-      margin-top: 14px;
-      padding: 12px 14px;
-      background: var(--accent-soft);
-      border-radius: 12px;
+      margin-top: 12px;
+      padding: 14px 16px;
+      background: linear-gradient(135deg, var(--accent-soft), #f5faf7);
+      border: 1px solid var(--border);
+      border-radius: 15px;
+      font-weight: 700;
     }
 
     .back-link {
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
       margin-top: 18px;
+      padding: 6px 11px;
+      border-radius: 999px;
       color: var(--accent);
+      background: rgba(53, 104, 89, 0.08);
+      font-size: 0.9rem;
       font-weight: 700;
       text-decoration: none;
     }
 
     .back-link:hover,
     .back-link:focus-visible {
-      text-decoration: underline;
+      background: var(--accent-soft);
       outline: none;
     }
 
     code {
+      display: inline-block;
+      max-width: 100%;
       direction: ltr;
       unicode-bidi: embed;
-      font-family: Consolas, monospace;
-      font-size: 0.92em;
+      margin: 1px 2px;
+      padding: 2px 7px;
+      border: 1px solid rgba(53, 104, 89, 0.14);
+      border-radius: 8px;
+      background: #f2f6f4;
+      color: #214b3f;
+      font-family: Consolas, "Courier New", monospace;
+      font-size: 0.9em;
+      white-space: normal;
+      overflow-wrap: anywhere;
     }
 
-    @media (max-width: 520px) {
+    @media (max-width: 560px) {
       .page {
-        width: min(100% - 20px, var(--content-width));
-        padding-top: 14px;
+        width: min(100% - 18px, var(--content-width));
+        padding-top: 10px;
       }
 
       .menu {
         grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+        padding: 10px;
+        border-radius: 19px;
+      }
+
+      .menu a {
+        min-height: 53px;
+        padding: 9px;
+        font-size: 0.94rem;
       }
 
       .device {
-        padding: 18px;
+        padding: 20px 21px 18px;
+        border-radius: 18px;
       }
     }
   </style>
@@ -204,7 +293,6 @@
         <li>הכפתור העליון מימין: לחיצה בודדת מדליקה את המזגן בסלון ולחיצה כפולה מכבה אותו.</li>
         <li>הכפתור התחתון משמאל: לחיצה בודדת מדליקה את האורות בחדר השינה ולחיצה כפולה מכבה אותם. הספוט בכניסה לחדר נכבה דקה אחרי שאר האורות.</li>
       </ol>
-      <img class="device-image" src="images/lights.jpg" alt="המפסקים של תאורת המטבח, הבית, המזגן וחדר השינה">
       <a class="back-link" href="#top">חזרה למעלה</a>
     </section>
 
@@ -286,24 +374,30 @@
 
     <section class="device" id="shutters">
       <h2>תריסים חשמליים</h2>
-      <p>בלילה התריסים נסגרים כמעט לגמרי, ובשעה 9:00 בבוקר הם נפתחים אוטומטית.</p>
+
+      <h3>התריסים בסלון</h3>
+      <p>התריסים נפתחים אוטומטית בבוקר ונסגרים אחר הצהריים.</p>
       <ol class="instructions">
-        <li>אפשר לפתוח ולסגור ידנית באמצעות החצים שעל המפסק ליד המיטה.</li>
         <li>כדי לסגור במהלך היום, למשל לצפייה בטלוויזיה: <code>Hey Google, close the blinds</code>.</li>
         <li>כדי לפתוח: <code>Hey Google, open the blinds</code>.</li>
-        <li>לפתיחה חלקית אפשר לומר, למשל: <code>Hey Google, set bedroom window to 70 percent</code>.</li>
-        <li>כאשר ויטו נשאר בבית, חשוב לוודא שהתריסים נשארים פתוחים לפחות עד החצי.</li>
-        <li>לפעמים התריסים מתנתקים מהרשת ו-Google תגיד שהם אינם זמינים. במקרה כזה משתמשים בחצים שעל המפסק.</li>
+        <li>לפתיחה חלקית אפשר לומר, למשל: <code>Hey Google, set the blinds to 50 percent</code>.</li>
+        <li>לפעמים התריסים מתנתקים מהרשת ו-Google תגיד שהם אינם זמינים. במקרה כזה משתמשים בכפתורים הקטנים שבצד השמאלי של התריס.</li>
       </ol>
-      <img class="device-image" src="images/shutters.jpg" alt="הכפתורים הידניים של התריסים החשמליים">
+
+      <h3>התריס בחדר השינה</h3>
+      <p>בלילה התריס נסגר כמעט לגמרי, ובשעה 9:00 בבוקר הוא נפתח אוטומטית.</p>
+      <ol class="instructions">
+        <li>אפשר לפתוח ולסגור ידנית באמצעות החצים שעל המפסק ליד המיטה.</li>
+        <li>לפתיחה חלקית דרך Google אפשר לומר, למשל: <code>Hey Google, set bedroom window to 70 percent</code>.</li>
+        <li>כאשר ויטו נשאר בבית, חשוב לוודא שהתריס נשאר פתוח לפחות עד החצי.</li>
+      </ol>
+
       <a class="back-link" href="#top">חזרה למעלה</a>
     </section>
 
     <section class="device" id="wifi">
       <h2>Wi-Fi</h2>
-      <div class="note">
-        הסיסמה לשתי הרשתות היא: <code>0524767527</code>
-      </div>
+      <div class="note">הסיסמה היא מספר הטלפון של זיו.</div>
       <a class="back-link" href="#top">חזרה למעלה</a>
     </section>
 
@@ -322,9 +416,8 @@
 
     <section class="device" id="office">
       <h2>משרד</h2>
-      <p>כדי להתחבר עם ה-MacBook למסכים במשרד, מחברים למחשב את שני כבלי ה-USB-C שבתמונה.</p>
+      <p>כדי להתחבר עם ה-MacBook למסכים במשרד, מחברים למחשב את שני כבלי ה-USB-C שנמצאים על השולחן.</p>
       <p>החיבור מפעיל את שני המסכים וגם מטעין את המחשב.</p>
-      <img class="device-image" src="images/office.jpg" alt="שני כבלי USB-C לחיבור ה-MacBook למסכים ולמטען">
       <a class="back-link" href="#top">חזרה למעלה</a>
     </section>
 
