@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light">
+  <title>הוראות לבית</title>
+
+  <style>
+    :root {
+      --background: #f5f5f3;
+      --card: #ffffff;
+      --text: #202020;
+      --muted: #6f6f6f;
+      --border: #deded9;
+      --accent: #2f5f50;
+      --accent-soft: #e9f0ed;
+      --shadow: 0 4px 18px rgba(0, 0, 0, 0.06);
+      --radius: 18px;
+      --content-width: 860px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--background);
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.65;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .page {
+      width: min(100% - 28px, var(--content-width));
+      margin: 0 auto;
+      padding: 24px 0 64px;
+    }
+
+    .menu {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(145px, 1fr));
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+
+    .menu a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 64px;
+      padding: 12px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      text-decoration: none;
+      font-weight: 700;
+      text-align: center;
+      box-shadow: var(--shadow);
+    }
+
+    .menu a:hover,
+    .menu a:focus-visible {
+      background: var(--accent-soft);
+      border-color: var(--accent);
+      outline: none;
+    }
+
+    .device {
+      scroll-margin-top: 18px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 22px;
+      margin-bottom: 18px;
+    }
+
+    .device h2 {
+      margin: 0 0 14px;
+      font-size: 1.45rem;
+    }
+
+    .instructions {
+      margin: 0;
+      padding-right: 22px;
+    }
+
+    .instructions li + li {
+      margin-top: 8px;
+    }
+
+    .image-placeholder {
+      display: grid;
+      place-items: center;
+      min-height: 190px;
+      margin: 18px 0 0;
+      padding: 20px;
+      border: 2px dashed var(--border);
+      border-radius: 14px;
+      background: #fafaf8;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    .device-image {
+      display: block;
+      width: 100%;
+      max-height: 620px;
+      object-fit: contain;
+      margin: 18px auto 0;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      background: #fafaf8;
+    }
+
+    .note {
+      margin-top: 14px;
+      padding: 12px 14px;
+      background: var(--accent-soft);
+      border-radius: 12px;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-top: 18px;
+      color: var(--accent);
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .back-link:hover,
+    .back-link:focus-visible {
+      text-decoration: underline;
+      outline: none;
+    }
+
+    code {
+      direction: ltr;
+      unicode-bidi: embed;
+      font-family: Consolas, monospace;
+      font-size: 0.92em;
+    }
+
+    @media (max-width: 520px) {
+      .page {
+        width: min(100% - 20px, var(--content-width));
+        padding-top: 14px;
+      }
+
+      .menu {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .device {
+        padding: 18px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="page" id="top">
+
+    <nav class="menu" aria-label="תוכן">
+      <a href="#dishwasher">מדיח</a>
+      <a href="#air-conditioners">מזגנים</a>
+      <a href="#lights">אורות</a>
+      <a href="#coffee-machine">מכונת קפה</a>
+      <a href="#pool">בריכה</a>
+      <a href="#vacuum">שואב</a>
+      <a href="#projector">מקרן</a>
+      <a href="#dog-food">אוכל לכלב</a>
+      <a href="#balcony-fan">מאוורר במרפסת</a>
+      <a href="#night-mode">כיבוי אורות בלילה</a>
+      <a href="#shutters">תריסים חשמליים</a>
+      <a href="#wifi">Wi-Fi</a>
+      <a href="#smart-speaker">רמקול חכם</a>
+      <a href="#music">מוזיקה</a>
+      <a href="#office">משרד</a>
+    </nav>
+
+    <section class="device" id="dishwasher">
+      <h2>מדיח</h2>
+      <ol class="instructions">
+        <li>להוסיף כאן איך מפעילים.</li>
+        <li>להוסיף כאן איזו תוכנית לבחור.</li>
+        <li>להוסיף כאן איפה נמצאות הטבליות.</li>
+      </ol>
+      <div class="image-placeholder">
+        תמונה: images/dishwasher.jpg
+      </div>
+      <a class="back-link" href="#top">חזרה למעלה</a>
+    </section>
+
+    <section class="device" id="air-conditioners">
+      <h2>מזגנים</h2>
+      <ol class="instructions">
+        <li>להוסיף כאן איך מפעילים.</li>
+        <li>להוסיף כאן איך משנים טמפרטורה.</li>
+        <li>להוסיף כאן איך מכבים.</li>
+      </ol>
+      <div class="image-placeholder">
+        תמונה: images/air-conditioner.jpg
+      </div>
+      <a class="back-link" href="#top">חזרה למעלה</a>
+    </section>
+
+    <section class="device" id="lights">
+      <h2>אורות</h2>
+      <ol class="instructions">
+        <li>להוסיף כאן איך שולטים באורות.</li>
+        <li>להוסיף כאן אילו חדרים או קבוצות קיימים.</li>
+      </ol>
+      <div class="image-placeholder">
+        תמונה: images/lights.jpg
+      </div>
+      <a class="back-link" href="#top">חזרה למעלה</a>
+    </section>
+
+    <section class="device" id="coffee-machine">
+      <h2>מכונת קפה</h2>
+      <ol class="instructions">
+        <li>להוסיף כאן איך מדליקים.</li>
+        <li>להוסיף כאן איך מכינים קפה.</li>
+        <li>להוסיף כאן איך מכבים או מנקים לאחר השימוש.</li>
+      </ol>
+      <div class="image-placeholder">
+        תמונה: images/coffee-machine.jpg
+      </div>
+      <a class="back-link" href="#top">חזרה למעלה</a>
+    </section>
+
+    <section class="device" id="pool">
+      <h2>בריכה</h2>
+      <ol class="instructions">
+        <li>להוסיף כאן איך מפעילים את מה שנחוץ לשימוש בבריכה.</li>
+        <li>להוסיף כאן איך מכבים.</li>
+      </ol>
+      <div class="image-placeholder">
+        תמונה: images/pool.jpg
+      </div>
+      <a class="back-link" href="#top">חזרה למעלה</a>
+    </section>
+
+    <section class="device" id="vacuum">
+      <h2>שואב</h2>
+      <ol class="instructions">
+        <li>להוסיף כאן איך מפעילים.</li>
+        <li>להוסיף כאן איך שולחים לעמדה או מכבים.</li>
+      </ol>
+      <div class="image-placeholder">
+        תמונה: images/vacuum.jpg
+      </div>
+      <a class="back-link" href="#top">חזרה למעלה</a>
+    </section>
+
+    <section class="device" id="projector">
+      <h2>מקרן</h2>
+      <ol class="instructions">
+        <li>להוסיף כאן איזה שלט מדליק את המקרן.</li>
+        <li>להוסיף כאן איך בוחרים מקור צפייה.</li>
+        <li>להוסיף כאן איך שולטים בווליום.</li>
+        <li>להוסיף כאן איך מכבים.</li>
+      </ol>
+      <div class="image-placeholder">
+        תמונה: images/projector.jpg
+      </div>
+      <a class="back-link" href="#top">חזרה למעלה</a>
+    </section>
+
+    <section class="device" id="dog-food">
+      <h2>אוכל לכלב</h2>
+      <ol class="instructions">
+        <li>כמות: להוסיף כאן.</li>
+        <li>המיקום של האוכל: להוסיף כאן.</li>
+      </ol>
+      <div class="image-placeholder">
+        תמונה: images/dog-food.jpg
+      </div>
+      <a class="back-link" href="#top">חזרה למעלה</a>
+    </section>
+
+    <section class="device" id="balcony-fan">
+      <h2>מאוורר במרפסת</h2>
+      <ol class="instructions">
+        <li>להוסיף כאן איך מפעילים.</li>
+        <li>להוסיף כאן איך משנים מהירות.</li>
+        <li>להוסיף כאן איך מכבים.</li>
+      </ol>
+      <div class="image-placeholder">
+        תמונה: images/balcony-fan.jpg
+      </div>
+      <a class="back-link" href="#top">חזרה למעלה</a>
+    </section>
+
+    <section class="device" id="night-mode">
+      <h2>כיבוי אורות בלילה</h2>
+      <ol class="instructions">
+        <li>להוסיף כאן מה לוחצים או אומרים כדי להפעיל.</li>
+        <li>להוסיף כאן מה בדיוק נכבה.</li>
+      </ol>
+      <div class="image-placeholder">
+        תמונה: images/night-mode.jpg
+      </div>
+      <a class="back-link" href="#top">חזרה למעלה</a>
+    </section>
+
+    <section class="device" id="shutters">
+      <h2>תריסים חשמליים</h2>
+      <ol class="instructions">
+        <li>להוסיף כאן איך פותחים.</li>
+        <li>להוסיף כאן איך עוצרים באמצע.</li>
+        <li>להוסיף כאן איך סוגרים.</li>
+      </ol>
+      <div class="image-placeholder">
+        תמונה: images/shutters.jpg
+      </div>
+      <a class="back-link" href="#top">חזרה למעלה</a>
+    </section>
+
+    <section class="device" id="wifi">
+      <h2>Wi-Fi</h2>
+      <div class="note">
+        <strong>שם הרשת:</strong> להוסיף כאן<br>
+        <strong>סיסמה:</strong> להוסיף כאן
+      </div>
+      <div class="image-placeholder">
+        אפשר לשים כאן QR להתחברות לרשת
+      </div>
+      <a class="back-link" href="#top">חזרה למעלה</a>
+    </section>
+
+    <section class="device" id="smart-speaker">
+      <h2>רמקול חכם</h2>
+      <ol class="instructions">
+        <li>להוסיף כאן את מילת ההפעלה.</li>
+        <li>להוסיף כאן פקודות שימושיות.</li>
+        <li>להוסיף כאן איך עוצרים מוזיקה או פעולה.</li>
+      </ol>
+      <div class="image-placeholder">
+        תמונה: images/smart-speaker.jpg
+      </div>
+      <a class="back-link" href="#top">חזרה למעלה</a>
+    </section>
+
+    <section class="device" id="music">
+      <h2>מוזיקה</h2>
+      <ol class="instructions">
+        <li>להוסיף כאן איך מתחברים למערכת או לרמקול.</li>
+        <li>להוסיף כאן איך עושים Casting מהטלפון.</li>
+        <li>להוסיף כאן איך שולטים בווליום.</li>
+        <li>להוסיף כאן איך מפסיקים את ההשמעה או מתנתקים.</li>
+      </ol>
+      <div class="image-placeholder">
+        תמונה: images/music.jpg
+      </div>
+      <a class="back-link" href="#top">חזרה למעלה</a>
+    </section>
+
+    <section class="device" id="office">
+      <h2>משרד</h2>
+      <ol class="instructions">
+        <li>להוסיף כאן אילו כבלים או מתאמים צריך לחבר.</li>
+        <li>להוסיף כאן איך מתחברים למסכים.</li>
+        <li>להוסיף כאן איך בוחרים הרחבת מסך או שכפול.</li>
+        <li>להוסיף כאן איך מתנתקים בסיום.</li>
+      </ol>
+      <div class="image-placeholder">
+        תמונה: images/office.jpg
+      </div>
+      <a class="back-link" href="#top">חזרה למעלה</a>
+    </section>
+
+  </main>
+</body>
+</html>
